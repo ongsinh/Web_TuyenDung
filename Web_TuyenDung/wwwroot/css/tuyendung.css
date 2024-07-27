@@ -31,7 +31,7 @@
         cursor: pointer;
     }
 
-.job-info-section {
+.job-info-section h2 {
     padding: 20px;
     text-align: center;
 }
@@ -40,7 +40,7 @@
         margin-bottom: 20px;
     }
 
-.job-list {
+/*.job-list {
     display: flex;
     justify-content: space-between;
     margin: 0px 50px;
@@ -55,8 +55,24 @@
     width: calc(50% - 40px);
     max-width: 600px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}*/
+.job-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0px 50px;
 }
 
+.job-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    flex: 1 1 30%; /* Đặt chiều rộng của mỗi item */
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 30%; /* Đảm bảo rằng mỗi mục không chiếm quá 30% chiều rộng của hàng */
+    box-sizing: border-box;
+}
 .job-header {
     display: flex;
     justify-content: space-between;
@@ -90,11 +106,11 @@
     font-weight: 600;
 }
 
-.job-description {
+/*.job-description {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+}*/
 
 .job-description-title {
     flex: 1;
@@ -109,7 +125,7 @@
 
 .job-description-quanity {
     flex: 1;
-    text-align: right;
+    /*text-align: right;*/
 }
 
 .description-quanity {
