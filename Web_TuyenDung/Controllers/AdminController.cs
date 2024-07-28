@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using Web_TuyenDung.DAO;
 using Web_TuyenDung.Models;
@@ -88,6 +89,42 @@ namespace Web_TuyenDung.Controllers
             return RedirectToAction("QuanLyViecLam");
         }
 
+        [HttpGet]
+        [Route("SuaViecLam")]
+        public async Task<IActionResult> Edit(int? id){
+            if(id==null){
+                return NotFound();
+            }
+            ViecLam vieclam = await _viecLamDAO.GetByID(id ?? 0);
+            return View("SuaViecLam",vieclam);
+        }
+        [HttpPost]
+        [Route("SuaViecLam")]
+        public async Task<IActionResult> Edit([Bind("MaViecLam","TieuDe","MoTa","MucLuong","NgayTao","NgayHetHan","TrangThai")] ViecLam vieclam){
+            if(ModelState.IsValid){
+                try{
+                    
+                    await _viecLamDAO.Update(vieclam);
+                }
+                catch(Exception ex){
+                    if(!ViecLamExits(vieclam.MaViecLam)){
+                        return NotFound();
+                    }else{
+                        throw;
+                    }
+                }
+            return RedirectToAction(nameof(QuanLyViecLam));
+
+            }
+            return View("SuaViecLam",vieclam);
+        }
+
+        private bool ViecLamExits(int id){
+            if(_viecLamDAO.GetByID(id) != null){
+                return true;
+            }
+            return false;
+        }
         [HttpGet]
         [Route("QuanLyUngTuyen/{id_vieclam}")]
         public async Task<IActionResult> QuanLyUngTuyen(int id_vieclam)

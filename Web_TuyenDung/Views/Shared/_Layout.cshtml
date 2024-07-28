@@ -14,7 +14,7 @@
     <header class="header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand logo" href="@Url.Action("Index","Home")">VNG</a>
+                <a class="navbar-brand logo"  href="@Url.Action("Index","Home")">SPT</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -61,7 +61,7 @@
                             {
                                 var nguoiDung = JsonConvert.DeserializeObject<NguoiDung>(ndjson);
                                 <a class="btn btn-primary me-2" href="#" role="button">@nguoiDung.TenND</a>
-                                <a class="btn btn-primary me-2" href="TaiKhoan/Logout" role="button">Logout</a>
+                                <a class="btn btn-primary me-2" href="/TaiKhoan/Logout" role="button">Logout</a>
                             }
                             else
                             {
@@ -78,9 +78,9 @@
     <div class="container">
         @RenderBody()
     </div>
-    <footer class="footer">
+    <footer class="footer" style="margin-top: 230px;">
         <div class="footer-left">
-            <div class="footer-logo">VNG</div>
+            <div class="footer-logo" style="margin-left: 50px;">SPT</div>
             <div class="footer-social">
                 <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -92,7 +92,7 @@
         </div>
         <div class="footer-center">
             <div class="footer-section">
-                <h3 class="footer-title">Về VNG</h3>
+                <h3 class="footer-title">Về SPT</h3>
                 <ul class="footer-list">
                     <li class="footer-item">Sứ mệnh</li>
                     <li class="footer-item">Giá trị cốt lõi</li>
@@ -119,7 +119,7 @@
             <div class="footer-section">
                 <h3 class="footer-title">Con người</h3>
                 <ul class="footer-list">
-                    <li class="footer-item">Con người VNG</li>
+                    <li class="footer-item">Con người SPT</li>
                     <li class="footer-item">Cuộc sống tại VNG</li>
                     <li class="footer-item">Cơ hội nghề nghiệp</li>
                 </ul>

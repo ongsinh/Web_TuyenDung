@@ -13,25 +13,35 @@
         border-color: #ff7f50; /* Màu viền */
     }
 
-        .btn-custom:hover {
-            background-color: #e65c00; /* Màu cam sáng khi hover */
-            border-color: #e65c00; /* Màu viền khi hover */
-            color: #fff; /* Màu chữ trắng khi hover */
-        }
+    .btn-custom:hover {
+        background-color: #e65c00; /* Màu cam sáng khi hover */
+        border-color: #e65c00; /* Màu viền khi hover */
+        color: #fff; /* Màu chữ trắng khi hover */
+    }
+    .ChiTiet{
+        overflow: auto;
+        margin-left: 40px;
+        font-size: 20px;
+        font-family: 'Fran'Font Awesome 5 Free';
+    }
+    
 </style>
 
 <main class="py-4">
     <section class="job-list">
         <div class="container">
             <h1 class="text-center mb-4">Quản lý ứng tuyển cho từng việc làm</h1>
-            <p>Tuyển dụng: @Model.TieuDe</p>
-            <p>Mô tả:</p>
-            <p class="ms-4">@Html.Raw(Model.MoTa.Replace("\r\n", "<br/>"))</p>
-            <p>Mức lương: @Model.MucLuong</p>
+            <div class="ChiTiet">
+                <p>Tuyển dụng: @Model.TieuDe</p>
+                <p>Mô tả: @Html.Raw(Model.MoTa.Replace("\r\n", "<br/>")) </p> 
+                <p>Mức lương: @Model.MucLuong</p>
+            </div>
+            
 
 
+            </bh>
             <div class="create-job text-center mb-4">
-                <p>Danh sách ứng tuyển</p>
+                <p style="font-size:30px">Danh sách ứng tuyển</p>
             </div>
 
             <table class="table">
