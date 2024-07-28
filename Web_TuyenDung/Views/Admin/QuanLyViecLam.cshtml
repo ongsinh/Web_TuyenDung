@@ -36,7 +36,7 @@
                     
                     @foreach(var vieclam in Model)
                     {
-                        <tr>
+                        <tr id="row-@vieclam.MaViecLam">
                             <td>@stt</td>
                             <td>@vieclam.NgayTao.ToString("dd/MM/yyyy")</td>
                             <td>@vieclam.NgayHetHan.ToString("dd/MM/yyyy")</td>
@@ -44,7 +44,7 @@
                             <td>@vieclam.MucLuong</td>
                             <td>
                                 <a href="#" class="btn btn-custom m2-2">Sửa</a>
-                                <a href="#" class="btn btn-custom me-2">Xóa</a>
+                                <a href="javascript:XoaViecLam(@vieclam.MaViecLam);" class="btn btn-custom me-2">Xóa</a>
                             </td>
                             <td>
                                 <a href="@Url.Action("QuanLyUngTuyen", "Admin",
@@ -63,4 +63,30 @@
 
     @* <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
+
+@* //href="@Url.Action("XoaViecLam", "Admin", new { id_vieclam = vieclam.MaViecLam })" *@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function XoaViecLam(MaViecLam) {
+        if (confirm("Bạn có chắc chắn muốn xóa việc làm này không?")) {
+            $.ajax({ 
+                url: `@Url.Action("XoaViecLam", "Admin")/${MaViecLam}`,
+                type: 'POST',
+                success: function (response) {
+                    if (response.success) {
+                        alert("Xóa việc làm thành công.");
+                        // Xóa dòng tương ứng trong bảng hoặc cập nhật lại danh sách
+                        $('#row-' + MaViecLam).remove();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
+                }
+            });
+        }
+    }
+</script>
 

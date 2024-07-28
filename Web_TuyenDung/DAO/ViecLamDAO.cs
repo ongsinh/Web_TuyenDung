@@ -32,5 +32,26 @@ namespace Web_TuyenDung.DAO
             
         }
 
+         public async Task<bool> Delete(int id)
+         {
+            var viecLam = await _dataContext.DSViecLam.FindAsync(id);
+            if (viecLam == null)
+            {
+                return false;
+            }
+
+            _dataContext.DSViecLam.Remove(viecLam);
+            await _dataContext.SaveChangesAsync();
+            return true;
+         }
+         
+         public async Task<List<ViecLam>> SearchByTitle(string title)
+        {
+            return await _dataContext.DSViecLam
+                .Where(vl => vl.TieuDe.Contains(title))
+                .Include(vl => vl.DSDonUT)
+                .ToListAsync();
+        }
+
     }
 }

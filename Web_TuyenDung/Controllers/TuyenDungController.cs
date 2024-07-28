@@ -78,6 +78,18 @@ namespace Web_TuyenDung.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> TimKiem(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var dsViecLam = await _ViecLamDAO.SearchByTitle(search);
+            return View("Index", dsViecLam);
+        }
+
 
     }
 }

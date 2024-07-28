@@ -10,10 +10,10 @@
 
     <main>
         <section class="search-section">
-            <form class="search-box" action="" method="">
-                <input type="text" placeholder="Tìm kiếm theo tên, vị trí ứng tuyển">
-                <button><i class="fas fa-search"></i> Tìm kiếm</button>
-            </form>
+        <form class="search-box" action="@Url.Action("TimKiem", "TuyenDung")" method="get">
+            <input type="text" name="search" placeholder="Tìm kiếm theo tên, vị trí ứng tuyển" >
+            <button type="submit"><i class="fas fa-search"></i> Tìm kiếm</button>
+        </form>
         </section>
         <section class="job-info-section">
             <h2>Thông tin việc làm</h2>

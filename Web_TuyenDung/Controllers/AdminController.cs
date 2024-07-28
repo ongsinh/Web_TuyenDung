@@ -9,6 +9,7 @@ namespace Web_TuyenDung.Controllers
     [Route("Admin/")]
     public class AdminController : Controller
     {
+        private readonly DataContext _dataContext;
         private readonly ViecLamDAO _viecLamDAO;
         private readonly NguoiDungDAO _nguoiDungDAO;
         private readonly UngTuyenDAO _ungTuyenDAO;
@@ -160,5 +161,18 @@ namespace Web_TuyenDung.Controllers
             return View(model);
         }
 
+
+        //xóa việc làm 
+        [HttpPost]
+        [Route("XoaViecLam/{id_vieclam}")]
+        public async Task<IActionResult> XoaViecLam(int id_vieclam)
+        {
+            bool result = await _viecLamDAO.Delete(id_vieclam);
+            if (result)
+            {
+                return Json(new { success = true });
+            }
+            return Json(new { success = false, message = "Xóa việc làm không thành công." });
+        }
     }
 }
