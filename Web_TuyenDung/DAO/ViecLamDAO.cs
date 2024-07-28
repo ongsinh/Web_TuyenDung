@@ -31,6 +31,22 @@ namespace Web_TuyenDung.DAO
             return await _dataContext.DSViecLam.FindAsync(id);
             
         }
+        public async Task<ViecLam> Update(ViecLam viecLam)
+        {
+            var checkID = await GetByID(viecLam.MaViecLam);
+            if(checkID!=null)
+            {
+                
+                checkID.TieuDe= viecLam.TieuDe;
+                checkID.MoTa=viecLam.MoTa;
+                checkID.NgayHetHan =viecLam.NgayHetHan;
+                checkID.MucLuong=viecLam.MucLuong;
+                checkID.NgayTao=viecLam.NgayTao;
+                checkID.TrangThai=viecLam.TrangThai;
 
+                await _dataContext.SaveChangesAsync();
+            }
+            return viecLam;
+        }
     }
 }

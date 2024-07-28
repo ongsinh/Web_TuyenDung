@@ -8,10 +8,6 @@ namespace Web_TuyenDung.Controllers
 {
     public class TaiKhoanController : Controller
     {
-        /*public IActionResult Index()
-        {
-            return View();
-        }*/
 
         private readonly NguoiDungDAO _NDdao;
         private readonly TaiKhoanDAO _TaiKhoanDAO;
@@ -58,7 +54,6 @@ namespace Web_TuyenDung.Controllers
             }
             ViewBag.Message = "Tài khoản hoặc mật khẩu không chính xác";
             return View(loginViewModel);
-            
         }
 
         [HttpGet]

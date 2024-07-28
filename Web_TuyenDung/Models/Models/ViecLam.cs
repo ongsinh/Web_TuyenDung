@@ -27,7 +27,7 @@ namespace Web_TuyenDung.Models
         [Column("bTrangThai", TypeName = "bit"), Required]
         public Boolean TrangThai { get; set; }
 
-        public ICollection<DonUngTuyen> DSDonUT { get; set; }
+        public ICollection<DonUngTuyen>? DSDonUT { get; set; }
 
 
 

@@ -1,12 +1,13 @@
-﻿@model Web_TuyenDung.Models.ViewModels.ViecLamViewModel
+@model ViecLam
 
 @{
-    ViewData["Title"] = "Thêm tin tuyển dụng";
+    ViewData["Title"] = "Sửa tin tuyển dụng";
 }
 
 <main>
-    <h1 class="main-title">Thêm việc làm mới</h1>
-    <form asp-action="ThemViecLam" class="job-form" >
+    <h1 class="main-title">Sửa việc làm đã đăng</h1>
+    <form asp-action="SuaViecLam" asp-asp-controller="Admin" class="job-form">
+        <input  type ="hidden" asp-for="MaViecLam"/> 
         <div class="form-group">
             <label for="title" class="form-label">Tiêu đề</label>
             <input id="title" asp-for="TieuDe" class="form-input" placeholder="Tiêu đề">
@@ -42,7 +43,7 @@
             </select>
         </div>
         <div class="submit-container">
-            <button type="submit" class="submit-button">Thêm mới</button>
+            <button type="submit" class="submit-button">Lưu thay đổi</button>
         </div>
     </form>
 </main>
