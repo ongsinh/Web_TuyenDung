@@ -12,8 +12,8 @@ using Web_TuyenDung.Models;
 namespace Web_TuyenDung.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240728061830_InitialCreat")]
-    partial class InitialCreat
+    [Migration("20240728155137_QLtuyendung")]
+    partial class QLtuyendung
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
