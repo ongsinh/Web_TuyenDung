@@ -10,6 +10,8 @@ namespace Web_TuyenDung.Models.ViewModels
 
         [Required(ErrorMessage = "Không được bỏ trống")]
         public string MoTa { get; set; }
+        [Required(ErrorMessage = "Không được bỏ trống")]
+        public string TTLienHe { get; set; }
 
         [Required(ErrorMessage = "Không được bỏ trống"), Range(1, float.MaxValue, ErrorMessage = "Mức lương không hợp lệ")]
         public float MucLuong { get; set; }

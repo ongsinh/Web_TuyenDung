@@ -43,6 +43,7 @@ namespace Web_TuyenDung.DAO
                 checkID.MucLuong=viecLam.MucLuong;
                 checkID.NgayTao=viecLam.NgayTao;
                 checkID.TrangThai=viecLam.TrangThai;
+                checkID.TTLienHe = viecLam.TTLienHe;
 
                 await _dataContext.SaveChangesAsync();
             }

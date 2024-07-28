@@ -79,6 +79,7 @@ namespace Web_TuyenDung.Controllers
             {
                 TieuDe = model.TieuDe,
                 MoTa = model.MoTa,
+                TTLienHe = model.TTLienHe,
                 MucLuong = model.MucLuong,
                 NgayTao = model.NgayTao,
                 NgayHetHan = model.NgayHetHan,
@@ -100,7 +101,7 @@ namespace Web_TuyenDung.Controllers
         }
         [HttpPost]
         [Route("SuaViecLam")]
-        public async Task<IActionResult> Edit([Bind("MaViecLam","TieuDe","MoTa","MucLuong","NgayTao","NgayHetHan","TrangThai")] ViecLam vieclam){
+        public async Task<IActionResult> Edit([Bind("MaViecLam","TieuDe","MoTa","MucLuong","NgayTao","NgayHetHan","TrangThai", "TTLienHe")] ViecLam vieclam){
             if(ModelState.IsValid){
                 try{
                     
