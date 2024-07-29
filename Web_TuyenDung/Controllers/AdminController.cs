@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using Web_TuyenDung.DAO;
 using Web_TuyenDung.Models;
@@ -9,6 +10,7 @@ namespace Web_TuyenDung.Controllers
     [Route("Admin/")]
     public class AdminController : Controller
     {
+        private readonly DataContext _dataContext;
         private readonly ViecLamDAO _viecLamDAO;
         private readonly NguoiDungDAO _nguoiDungDAO;
         private readonly UngTuyenDAO _ungTuyenDAO;
@@ -77,6 +79,7 @@ namespace Web_TuyenDung.Controllers
             {
                 TieuDe = model.TieuDe,
                 MoTa = model.MoTa,
+                TTLienHe = model.TTLienHe,
                 MucLuong = model.MucLuong,
                 NgayTao = model.NgayTao,
                 NgayHetHan = model.NgayHetHan,
@@ -87,6 +90,42 @@ namespace Web_TuyenDung.Controllers
             return RedirectToAction("QuanLyViecLam");
         }
 
+        [HttpGet]
+        [Route("SuaViecLam")]
+        public async Task<IActionResult> Edit(int? id){
+            if(id==null){
+                return NotFound();
+            }
+            ViecLam vieclam = await _viecLamDAO.GetByID(id ?? 0);
+            return View("SuaViecLam",vieclam);
+        }
+        [HttpPost]
+        [Route("SuaViecLam")]
+        public async Task<IActionResult> Edit([Bind("MaViecLam","TieuDe","MoTa","MucLuong","NgayTao","NgayHetHan","TrangThai", "TTLienHe")] ViecLam vieclam){
+            if(ModelState.IsValid){
+                try{
+                    
+                    await _viecLamDAO.Update(vieclam);
+                }
+                catch(Exception ex){
+                    if(!ViecLamExits(vieclam.MaViecLam)){
+                        return NotFound();
+                    }else{
+                        throw;
+                    }
+                }
+            return RedirectToAction(nameof(QuanLyViecLam));
+
+            }
+            return View("SuaViecLam",vieclam);
+        }
+
+        private bool ViecLamExits(int id){
+            if(_viecLamDAO.GetByID(id) != null){
+                return true;
+            }
+            return false;
+        }
         [HttpGet]
         [Route("QuanLyUngTuyen/{id_vieclam}")]
         public async Task<IActionResult> QuanLyUngTuyen(int id_vieclam)
@@ -160,5 +199,18 @@ namespace Web_TuyenDung.Controllers
             return View(model);
         }
 
+
+        //xóa việc làm 
+        [HttpPost]
+        [Route("XoaViecLam/{id_vieclam}")]
+        public async Task<IActionResult> XoaViecLam(int id_vieclam)
+        {
+            bool result = await _viecLamDAO.Delete(id_vieclam);
+            if (result)
+            {
+                return Json(new { success = true });
+            }
+            return Json(new { success = false, message = "Xóa việc làm không thành công." });
+        }
     }
 }

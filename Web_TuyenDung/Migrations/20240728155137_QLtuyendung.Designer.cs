@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_TuyenDung.Models;
 
@@ -11,9 +12,11 @@ using Web_TuyenDung.Models;
 namespace Web_TuyenDung.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240728155137_QLtuyendung")]
+    partial class QLtuyendung
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,11 +218,6 @@ namespace Web_TuyenDung.Migrations
                     b.Property<DateTime>("NgayTao")
                         .HasColumnType("datetime2")
                         .HasColumnName("dNgayTao");
-
-                    b.Property<string>("TTLienHe")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("sTTLienHe");
 
                     b.Property<string>("TieuDe")
                         .IsRequired()

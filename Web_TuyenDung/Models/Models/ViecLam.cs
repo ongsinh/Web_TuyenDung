@@ -15,6 +15,9 @@ namespace Web_TuyenDung.Models
         [Column("sMota", TypeName = "nvarchar(max)"), Required] 
         public string MoTa { get; set;}
 
+        [Column("sTTLienHe", TypeName = "nvarchar(max)"), Required]
+        public string TTLienHe { get; set; }
+
         [Column("fMucLuong", TypeName ="float"), Required]
         public float MucLuong { get; set; }
 
@@ -27,7 +30,7 @@ namespace Web_TuyenDung.Models
         [Column("bTrangThai", TypeName = "bit"), Required]
         public Boolean TrangThai { get; set; }
 
-        public ICollection<DonUngTuyen> DSDonUT { get; set; }
+        public ICollection<DonUngTuyen>? DSDonUT { get; set; }
 
 
 
