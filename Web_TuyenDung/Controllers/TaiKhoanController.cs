@@ -56,6 +56,73 @@ namespace Web_TuyenDung.Controllers
             return View(loginViewModel);
         }
 
+        //xử lý nếu đề yêu cầu mật sai quá 3 lần thì 30 phút sau cho đăng nhập lại
+        //private const int MaxFailedAttempts = 3;
+        //private const int LockoutDurationMinutes = 30;
+
+        //[HttpPost]
+        //public async Task<IActionResult> Login(LoginViewModel loginViewModel)
+        //{
+        //    string email = loginViewModel.Email.Trim();
+        //    string matKhau = loginViewModel.MatKhau.Trim();
+
+        //    if (email == "" || matKhau == "")
+        //    {
+        //        ViewBag.Message = "Yêu cầu nhập đầy đủ thông tin!";
+        //        return View(loginViewModel);
+        //    }
+
+        //    // Lấy thông tin đăng nhập thất bại từ session
+        //    var failedLoginAttempts = HttpContext.Session.GetInt32("FailedLoginAttempts") ?? 0;
+        //    var lastFailedLoginAttempt = HttpContext.Session.GetString("LastFailedLoginAttempt");
+
+        //    if (failedLoginAttempts >= MaxFailedAttempts)
+        //    {
+        //        if (DateTime.TryParse(lastFailedLoginAttempt, out var lastAttemptTime))
+        //        {
+        //            var lockoutEndTime = lastAttemptTime.AddMinutes(LockoutDurationMinutes);
+        //            if (DateTime.Now < lockoutEndTime)
+        //            {
+        //                ViewBag.Message = $"Tài khoản của bạn đã bị khóa. Vui lòng thử lại sau {lockoutEndTime - DateTime.Now:mm\\:ss} phút.";
+        //                return View(loginViewModel);
+        //            }
+        //            else
+        //            {
+        //                // Reset thông tin khi đã qua thời gian khóa
+        //                HttpContext.Session.SetInt32("FailedLoginAttempts", 0);
+        //                HttpContext.Session.SetString("LastFailedLoginAttempt", null);
+        //            }
+        //        }
+        //    }
+
+        //    var tk = await Authenticate(email, matKhau);
+        //    if (tk != null)
+        //    {
+        //        NguoiDung nd = tk.NguoiDung;
+        //        var ndJson = JsonConvert.SerializeObject(nd, Formatting.None,
+        //            new JsonSerializerSettings()
+        //            {
+        //                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        //            });
+        //        HttpContext.Session.SetString("NguoiDung", ndJson);
+        //        HttpContext.Session.SetString("QuyenHan", tk.QuyenHan.TenQuyen);
+        //        if (tk.QuyenHan.TenQuyen.Equals("Admin"))
+        //        {
+        //            return RedirectToAction("Index", "Admin");
+        //        }
+
+        //        return RedirectToAction("Index", "Home");
+        //    }
+
+        //    // Xử lý khi đăng nhập thất bại
+        //    ViewBag.Message = "Tài khoản hoặc mật khẩu không chính xác";
+        //    failedLoginAttempts++;
+        //    HttpContext.Session.SetInt32("FailedLoginAttempts", failedLoginAttempts);
+        //    HttpContext.Session.SetString("LastFailedLoginAttempt", DateTime.Now.ToString());
+
+        //    return View(loginViewModel);
+        //}
+
         [HttpGet]
         public IActionResult Register()
         {

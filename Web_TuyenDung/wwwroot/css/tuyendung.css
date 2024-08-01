@@ -67,10 +67,10 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 20px;
-    flex: 1 1 30%; /* Đặt chiều rộng của mỗi item */
+    flex: 1 1 30%; /* Đặt chiều rộng của mỗi item nếu 4 item để 22%*/
     margin: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 30%; /* Đảm bảo rằng mỗi mục không chiếm quá 30% chiều rộng của hàng */
+    max-width: 30%; /* Đảm bảo rằng mỗi mục không chiếm quá 30% chiều rộng của hàng để 22% */
     box-sizing: border-box;
 }
 .job-header {
@@ -211,7 +211,7 @@
     }
 
     .job-card {
-        width: 100%;
+        max-width: 100%;
     }
 
     .job-description {

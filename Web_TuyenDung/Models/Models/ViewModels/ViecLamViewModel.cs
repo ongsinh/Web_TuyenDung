@@ -6,6 +6,8 @@ namespace Web_TuyenDung.Models.ViewModels
     public class ViecLamViewModel
     {
         [Required(ErrorMessage = "Không được bỏ trống")]
+        [RegularExpression(@"^\d.*", ErrorMessage = "Tiêu đề phải bắt đầu bằng chữ số")]
+        [MinLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
         public string TieuDe { get; set; }
 
         [Required(ErrorMessage = "Không được bỏ trống")]

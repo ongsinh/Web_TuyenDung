@@ -1,4 +1,4 @@
-﻿@model Web_TuyenDung.Models.ViewModels.ViecLamViewModel
+﻿@model Web_TuyenDung.Models.ViecLam
 
 @{
     ViewData["Title"] = "Thêm tin tuyển dụng";
@@ -6,7 +6,7 @@
 
 <main>
     <h1 class="main-title">Thêm việc làm mới</h1>
-    <form asp-action="ThemViecLam" class="job-form" >
+    <form asp-action="ThemViecLam" class="job-form" method="post">
         <div class="form-group">
             <label for="title" class="form-label">Tiêu đề</label>
             <input id="title" asp-for="TieuDe" class="form-input" placeholder="Tiêu đề">
@@ -54,3 +54,35 @@
 
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@* <script>
+    $(document).ready(function () {
+        $('#jobForm').submit(function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: '@Url.Action("ThemViecLam", "Admin")',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        alert('Thêm việc làm thành công.');
+                        $('#jobForm')[0].reset(); // Clear the form
+                    } else {
+                        alert('Thêm việc làm thất bại: ' + response.message);
+                        // Optionally, display validation errors on the form
+                        if (response.errors) {
+                            for (const error in response.errors) {
+                                const errorMessage = response.errors[error];
+                                $(`#${error}`).after(`<span class="text-danger">${errorMessage}</span>`);
+                            }
+                        }
+                    }
+                },
+                error: function () {
+                    alert('Đã có lỗi xảy ra. Vui lòng thử lại.');
+                }
+            });
+        });
+    });
+</script> *@

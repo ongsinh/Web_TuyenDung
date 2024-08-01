@@ -89,6 +89,43 @@ namespace Web_TuyenDung.Controllers
 
             return RedirectToAction("QuanLyViecLam");
         }
+        [HttpPost]
+        [Route("ThemViecLam")]
+        //public async Task<IActionResult> ThemViecLam(ViecLam model)
+        //{
+        //    // Kiểm tra tính hợp lệ của ModelState
+        //    if (!ModelState.IsValid)
+        //    {
+        //        // Nếu ModelState không hợp lệ, trả về view với model để hiển thị lỗi
+        //        return View(model);
+        //    }
+
+        //    // Kiểm tra điều kiện Ngày hết hạn phải lớn hơn Ngày tạo
+        //    if (model.NgayHetHan <= model.NgayTao)
+        //    {
+        //        ModelState.AddModelError("NgayHetHan", "Ngày hết hạn phải lớn hơn ngày tạo");
+        //        return View(model);
+        //    }
+
+        //    // Nếu tất cả điều kiện đều hợp lệ, tạo mới đối tượng ViecLam
+        //    var viecLam = new ViecLam
+        //    {
+        //        TieuDe = model.TieuDe,
+        //        MoTa = model.MoTa,
+        //        TTLienHe = model.TTLienHe,
+        //        MucLuong = model.MucLuong,
+        //        NgayTao = model.NgayTao,
+        //        NgayHetHan = model.NgayHetHan,
+        //        TrangThai = Convert.ToBoolean(model.TrangThai)
+        //    };
+
+        //    // Lưu đối tượng ViecLam vào cơ sở dữ liệu
+        //    await _viecLamDAO.Save(viecLam);
+
+        //    // Chuyển hướng đến trang quản lý việc làm
+        //    return RedirectToAction("QuanLyViecLam");
+        //}
+
 
         [HttpGet]
         [Route("SuaViecLam")]
@@ -212,5 +249,47 @@ namespace Web_TuyenDung.Controllers
             }
             return Json(new { success = false, message = "Xóa việc làm không thành công." });
         }
+
+
+
+
+
+        //them viec lam bang ajax
+        //[HttpPost]
+        //[Route("ThemViecLam")]
+        //public async Task<IActionResult> ThemViecLam(ViecLam model)
+        //{
+        //    // Kiểm tra tính hợp lệ của ModelState
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Json(new { success = false, message = "Dữ liệu không hợp lệ", errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)) });
+        //    }
+
+        //    // Kiểm tra điều kiện Ngày hết hạn phải lớn hơn Ngày tạo
+        //    if (model.NgayHetHan <= model.NgayTao)
+        //    {
+        //        ModelState.AddModelError("NgayHetHan", "Ngày hết hạn phải lớn hơn ngày tạo");
+        //        return Json(new { success = false, message = "Ngày hết hạn phải lớn hơn ngày tạo" });
+        //    }
+
+        //    // Nếu tất cả điều kiện đều hợp lệ, tạo mới đối tượng ViecLam
+        //    var viecLam = new ViecLam
+        //    {
+        //        TieuDe = model.TieuDe,
+        //        MoTa = model.MoTa,
+        //        TTLienHe = model.TTLienHe,
+        //        MucLuong = model.MucLuong,
+        //        NgayTao = model.NgayTao,
+        //        NgayHetHan = model.NgayHetHan,
+        //        TrangThai = Convert.ToBoolean(model.TrangThai)
+        //    };
+
+        //    // Lưu đối tượng ViecLam vào cơ sở dữ liệu
+        //    await _viecLamDAO.Save(viecLam);
+
+        //    // Trả về kết quả JSON thành công
+        //    return Json(new { success = true, message = "Thêm việc làm thành công" });
+        //}
+
     }
 }

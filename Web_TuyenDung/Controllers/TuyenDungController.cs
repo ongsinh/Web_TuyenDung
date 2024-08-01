@@ -27,6 +27,15 @@ namespace Web_TuyenDung.Controllers
             return View(dsViecLam);
         }
 
+        [Route("Thi")]
+        public async Task<IActionResult> Thi()
+        {
+
+            var dsViecLam = await _ViecLamDAO.GetAll();
+            return View(dsViecLam);
+        }
+
+
         [HttpGet]
         [Route("TuyenDung/UngTuyen/{id_vieclam}")]
         public IActionResult UngTuyen(int id_vieclam)
