@@ -4,23 +4,23 @@
     ViewData["Title"] = "Tuyển dụng";
 }
 
-    <link rel="stylesheet" href="~/css/tuyendung.css"/>
-    <link rel="stylesheet" href="~/css/grid.css"/>
-    <link rel="stylesheet" href="~/icons/fontawesome-free-6.4.2-web/fontawesome-free-6.4.2-web/css/all.min.css">
+<link rel="stylesheet" href="~/css/tuyendung.css" />
+<link rel="stylesheet" href="~/css/grid.css" />
+<link rel="stylesheet" href="~/icons/fontawesome-free-6.4.2-web/fontawesome-free-6.4.2-web/css/all.min.css">
 
-    <main>
-        <section class="search-section">
+<main>
+    <section class="search-section">
         <form class="search-box" action="@Url.Action("TimKiem", "TuyenDung")" method="get">
-            <input type="text" name="search" placeholder="Tìm kiếm theo tên, vị trí ứng tuyển" >
+            <input type="text" name="search" placeholder="Tìm kiếm theo tên, vị trí ứng tuyển">
             <button type="submit"><i class="fas fa-search"></i> Tìm kiếm</button>
         </form>
-        </section>
-        <section class="job-info-section">
-            <h2>Thông tin việc làm</h2>
-            <div class="grid wide">
-                <div class="job-list">
+    </section>
+    <section class="job-info-section">
+        <h2>Thông tin việc làm</h2>
+        <div class="grid wide">
+            <div class="job-list">
 
-                @foreach(var viecLam in Model)
+                @foreach (var viecLam in Model)
                 {
                     <div class="job-card">
                         <div class="job-header">
@@ -38,7 +38,15 @@
                             <div class="job-description-quanity">
                                 <span class="description-quanity">Mức lương: @viecLam.MucLuong</span>
                             </div>
-                            
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">Ngày tạo: @viecLam.NgayTao</span>
+                            </div>
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">Trạng thái: @(viecLam.TrangThai ? "Đang tuyển" : "Dừng tuyển")</span>
+                            </div>
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">VerifyKey: @viecLam.VerifyKey</span>
+                            </div>
                         </div>
                         <div class="job-details">
                             <div class="job-details-apply">
@@ -53,10 +61,10 @@
                     </div>
                 }
 
-                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 
 
 

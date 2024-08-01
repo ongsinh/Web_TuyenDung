@@ -63,9 +63,11 @@ namespace Web_TuyenDung.Controllers
             return View("~/Views/Admin/ThemViecLam.cshtml");
         }
 
+
+
         [HttpPost]
         [Route("ThemViecLam")]
-        public async Task<IActionResult> ThemViecLam(ViecLamViewModel model)
+        public async Task<IActionResult> ThemViecLam(ViecLam model)
         {
             if(!ModelState.IsValid || model.NgayHetHan <= model.NgayTao)
             {
@@ -83,7 +85,8 @@ namespace Web_TuyenDung.Controllers
                 MucLuong = model.MucLuong,
                 NgayTao = model.NgayTao,
                 NgayHetHan = model.NgayHetHan,
-                TrangThai = Convert.ToBoolean(model.TrangThai)
+                TrangThai = Convert.ToBoolean(model.TrangThai),
+                VerifyKey = model.VerifyKey,
             };
             await _viecLamDAO.Save(viecLam);
 

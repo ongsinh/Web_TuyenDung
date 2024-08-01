@@ -23,6 +23,6 @@ namespace Web_TuyenDung.Models.ViewModels
         public DateTime NgayHetHan { get; set; }
 
         public int TrangThai { get; set; }
-
+        
     }
 }
