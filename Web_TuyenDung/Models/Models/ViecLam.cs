@@ -11,8 +11,8 @@ namespace Web_TuyenDung.Models
 
         [Column("sTieuDe"), StringLength(255)]
         [Required(ErrorMessage = "Không được bỏ trống")]
-        [RegularExpression(@"^\d.*", ErrorMessage = "Tiêu đề phải bắt đầu bằng chữ số")]
-        [MinLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
+        //[RegularExpression(@"^\d.*", ErrorMessage = "Tiêu đề phải bắt đầu bằng chữ số")]
+        //[MinLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
         public string TieuDe {  get; set; }
         
         [Column("sMota", TypeName = "nvarchar(max)")]

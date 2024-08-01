@@ -63,18 +63,26 @@ namespace Web_TuyenDung.Controllers
             return View("~/Views/Admin/ThemViecLam.cshtml");
         }
 
+
         [HttpPost]
         [Route("ThemViecLam")]
-        public async Task<IActionResult> ThemViecLam(ViecLamViewModel model)
+        public async Task<IActionResult> ThemViecLam(ViecLam model)
         {
-            if(!ModelState.IsValid || model.NgayHetHan <= model.NgayTao)
+            // Kiểm tra tính hợp lệ của ModelState
+            if (!ModelState.IsValid)
             {
-                if(model.NgayHetHan <= model.NgayTao)
-                {
-                    ModelState.AddModelError("NgayHetHan", "Ngày hết hạn phải lớn hơn ngày tạo");
-                    return View(model);
-                }
+                // Nếu ModelState không hợp lệ, trả về view với model để hiển thị lỗi
+                return View(model);
             }
+
+            // Kiểm tra điều kiện Ngày hết hạn phải lớn hơn Ngày tạo
+            if (model.NgayHetHan <= model.NgayTao)
+            {
+                ModelState.AddModelError("NgayHetHan", "Ngày hết hạn phải lớn hơn ngày tạo");
+                return View(model);
+            }
+
+            // Nếu tất cả điều kiện đều hợp lệ, tạo mới đối tượng ViecLam
             var viecLam = new ViecLam
             {
                 TieuDe = model.TieuDe,
@@ -85,46 +93,13 @@ namespace Web_TuyenDung.Controllers
                 NgayHetHan = model.NgayHetHan,
                 TrangThai = Convert.ToBoolean(model.TrangThai)
             };
+
+            // Lưu đối tượng ViecLam vào cơ sở dữ liệu
             await _viecLamDAO.Save(viecLam);
 
+            // Chuyển hướng đến trang quản lý việc làm
             return RedirectToAction("QuanLyViecLam");
         }
-        [HttpPost]
-        [Route("ThemViecLam")]
-        //public async Task<IActionResult> ThemViecLam(ViecLam model)
-        //{
-        //    // Kiểm tra tính hợp lệ của ModelState
-        //    if (!ModelState.IsValid)
-        //    {
-        //        // Nếu ModelState không hợp lệ, trả về view với model để hiển thị lỗi
-        //        return View(model);
-        //    }
-
-        //    // Kiểm tra điều kiện Ngày hết hạn phải lớn hơn Ngày tạo
-        //    if (model.NgayHetHan <= model.NgayTao)
-        //    {
-        //        ModelState.AddModelError("NgayHetHan", "Ngày hết hạn phải lớn hơn ngày tạo");
-        //        return View(model);
-        //    }
-
-        //    // Nếu tất cả điều kiện đều hợp lệ, tạo mới đối tượng ViecLam
-        //    var viecLam = new ViecLam
-        //    {
-        //        TieuDe = model.TieuDe,
-        //        MoTa = model.MoTa,
-        //        TTLienHe = model.TTLienHe,
-        //        MucLuong = model.MucLuong,
-        //        NgayTao = model.NgayTao,
-        //        NgayHetHan = model.NgayHetHan,
-        //        TrangThai = Convert.ToBoolean(model.TrangThai)
-        //    };
-
-        //    // Lưu đối tượng ViecLam vào cơ sở dữ liệu
-        //    await _viecLamDAO.Save(viecLam);
-
-        //    // Chuyển hướng đến trang quản lý việc làm
-        //    return RedirectToAction("QuanLyViecLam");
-        //}
 
 
         [HttpGet]
