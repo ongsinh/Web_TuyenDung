@@ -40,11 +40,11 @@ namespace Web_TuyenDung.Models
 
         public ICollection<DonUngTuyen>? DSDonUT { get; set; }
 
-
-        [Required(ErrorMessage = "Không được bỏ trống")]
-        [RegularExpression(@"^\d.*", ErrorMessage = "Tiêu đề phải bắt đầu bằng chữ số")]
-        [MinLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
-        public string VerifyKey { get; set; }
+        //2.Thêm 1trg mới
+        //[Required(ErrorMessage = "Không được bỏ trống")]
+        //[RegularExpression(@"^\d.*", ErrorMessage = "Tiêu đề phải bắt đầu bằng chữ số")]
+       // [MinLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
+       // public string VerifyKey { get; set; }
 
 
     }
