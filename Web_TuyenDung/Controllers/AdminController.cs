@@ -91,7 +91,8 @@ namespace Web_TuyenDung.Controllers
                 MucLuong = model.MucLuong,
                 NgayTao = model.NgayTao,
                 NgayHetHan = model.NgayHetHan,
-                TrangThai = Convert.ToBoolean(model.TrangThai)
+                TrangThai = model.TrangThai,//Convert.ToBoolean(model.TrangThai)
+                VerifyKey = model.VerifyKey, 
             };
 
             // Lưu đối tượng ViecLam vào cơ sở dữ liệu

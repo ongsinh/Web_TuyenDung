@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web_TuyenDung.Models;
 
@@ -11,9 +12,11 @@ using Web_TuyenDung.Models;
 namespace Web_TuyenDung.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240801173326_bai1")]
+    partial class bai1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,11 +233,6 @@ namespace Web_TuyenDung.Migrations
                     b.Property<bool>("TrangThai")
                         .HasColumnType("bit")
                         .HasColumnName("bTrangThai");
-
-                    b.Property<string>("VerifyKey")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("MaViecLam");
 
