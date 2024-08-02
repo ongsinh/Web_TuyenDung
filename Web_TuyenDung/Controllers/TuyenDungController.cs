@@ -99,6 +99,19 @@ namespace Web_TuyenDung.Controllers
             return View("Index", dsViecLam);
         }
 
+        [HttpPost]
+        [Route("XoaViecLam/{id_vieclam}")]
+        public async Task<IActionResult> XoaViecLam(int id_vieclam)
+        {
+            bool result = await _ViecLamDAO.Delete(id_vieclam);
+            if (result)
+            {
+                return Json(new { success = true });
+            }
+            return Json(new { success = false, message = "Xóa việc làm không thành công." });
+        }
+
+
 
     }
 }

@@ -33,7 +33,29 @@
         </section>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function XoaViecLam(MaViecLam) {
+        if (confirm("Bạn có chắc chắn muốn xóa việc làm này không?")) {
+            $.ajax({
+                url: `@Url.Action("XoaViecLam", "Admin")/${MaViecLam}`,
+                type: 'POST',
+                success: function (response) {
+                    if (response.success) {
+                        alert("Xóa việc làm thành công.");
+                        // Xóa dòng tương ứng trong bảng hoặc cập nhật lại danh sách
+                        $('#row-' + MaViecLam).remove();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
+                }
+            });
+        }
+    }
+</script>
 
 
 

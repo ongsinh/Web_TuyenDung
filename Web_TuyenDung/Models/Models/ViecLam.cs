@@ -11,6 +11,8 @@ namespace Web_TuyenDung.Models
 
         [Column("sTieuDe"), StringLength(255)]
         [Required(ErrorMessage = "Không được bỏ trống")]
+        [MinLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
+        [MaxLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
         public string TieuDe {  get; set; }
         
         [Column("sMota", TypeName = "nvarchar(max)")]
@@ -37,11 +39,12 @@ namespace Web_TuyenDung.Models
         public Boolean TrangThai { get; set; }
 
         public ICollection<DonUngTuyen>? DSDonUT { get; set; }
-        //[RegularExpression(@"^\d.*", ErrorMessage = "Tiêu đề phải bắt đầu bằng chữ số")]
         //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$", ErrorMessage = "Tiêu đề phải có ít nhất một chữ hoa, một chữ thường, một chữ số, và một ký tự đặc biệt")]
         //[RegularExpression(@".{9,}\d$", ErrorMessage = "Tiêu đề phải có ít nhất 10 ký tự và kết thúc bằng số")]
-        //[MinLength(10, ErrorMessage = "Tiêu đề phải có ít nhất 10 kí tự")]
-
+        [RegularExpression(@"^\d.*", ErrorMessage = "Tiêu đề phải bắt đầu bằng chữ số")]
+        [MinLength(10, ErrorMessage = "Tiêu đề phải có 10 kí tự")]
+        [MaxLength(10, ErrorMessage = "Tiêu đề phải có 10 kí tự")]
+        public string VerifyKey { get; set; }
 
     }
 }

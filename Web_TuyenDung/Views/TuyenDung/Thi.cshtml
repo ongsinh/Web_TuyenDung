@@ -22,7 +22,7 @@
 
                 @foreach (var viecLam in Model)
                 {
-                    <div class="job-card">
+                    <div class="job-card" id="job-@viecLam.MaViecLam">
                         <div class="job-header">
                             <div class="job-header-title">
                                 @viecLam.TieuDe
@@ -38,6 +38,15 @@
                             <div class="job-description-quanity">
                                 <span class="description-quanity">Mức lương: @viecLam.MucLuong</span>
                             </div>
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">Ngày tạo: @viecLam.NgayTao</span>
+                            </div>
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">VerifyKey: @viecLam.VerifyKey</span>
+                            </div> 
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">Trạng thái: @(viecLam.TrangThai ? "Đang tuyển" : "Dừng tuyển")</span>
+                            </div>
                         </div>
                         <div class="job-details">
                             <div class="job-details-apply">
@@ -46,6 +55,9 @@
                                 </div>
                                 <div class="details-apply-btn">
                                     <a class="btn btn-apply" href="@Url.Action("UngTuyen", "TuyenDung", new { id_vieclam = viecLam.MaViecLam })">Ứng tuyển</a>
+                                </div>
+                                <div class="details-apply-btn">
+                                    <a class="btn btn-apply" href="javascript:XoaViecLam(@viecLam.MaViecLam);">Xóa</a>
                                 </div>
                             </div>
                         </div>
@@ -57,6 +69,29 @@
     </section>
 </main>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function XoaViecLam(MaViecLam) {
+        if (confirm("Bạn có chắc chắn muốn xóa việc làm này không?")) {
+            $.ajax({
+                url: `@Url.Action("XoaViecLam", "Admin")/${MaViecLam}`,
+                type: 'POST',
+                success: function (response) {
+                    if (response.success) {
+                        alert("Xóa việc làm thành công.");
+                        // Xóa dòng tương ứng trong bảng hoặc cập nhật lại danh sách
+                        $('#job-' + MaViecLam).remove();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert("Đã có lỗi xảy ra. Vui lòng thử lại.");
+                }
+            });
+        }
+    }
+</script>
 
 
 
